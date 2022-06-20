@@ -3,7 +3,7 @@
 #from email.policy import default
 from flask import Flask, redirect, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-#import sqlalchemy
+
 from datetime import datetime
 
 app= Flask(__name__)
@@ -37,7 +37,7 @@ def index():
         tasks = Todo.query.order_by(Todo.date_created).all()
         return render_template('index.html', tasks=tasks)
 
-        
+
 @app.route('/delete/<int:id>')
 def delete(id):
     task_to_delete = Todo.query.get_or_404(id)
